@@ -1,6 +1,8 @@
-package csc113;
+
+package helloall;
 
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Assistant extends Employee {
 
@@ -11,32 +13,35 @@ super(firstName, lastNmae, email, salary); }
 
 public void bonus () {
 Scanner input = new Scanner(System.in);
-System.out.println("enter how many days the Assistant has missed");
-absensDays=input.nextInt();
+//System.out.println("enter how many days the Assistant has missed");
 //checks invaild input
-while (absensDays<0|| absensDays>300) {
-System.out.println("invaild input!! enter again");
-absensDays=input.nextInt(); }
+try{
+absensDays=input.nextInt();
+if(absensDays<0|| absensDays>300)
+throw new InputOutOfRangeException ();
+    }catch(InputOutOfRangeException e){
+JOptionPane.showMessageDialog(null,"invaild input!! enter again");
+ }
 // when input is vaild calculate bonus
 if (absensDays==0) {
-System.out.println("congratulations !! adminstratior " + firstName +" " + lastName + " got a bonus of 2000 riyals");
+JOptionPane.showMessageDialog(null,"congratulations !! adminstratior " + firstName +" " + lastName + " got a bonus of 2000 riyals");
 salary+=2000;
 }
 
 else if (absensDays<=5) {
-System.out.println("congratulations !! adminstratior " + firstName +" " + lastName + " got a bonus of 550 riyals");
+JOptionPane.showMessageDialog(null,"congratulations !! adminstratior " + firstName +" " + lastName + " got a bonus of 550 riyals");
 salary+=550;
 }
 
 
 else if (absensDays<=10) {
-System.out.println("congratulations !! adminstratior " + firstName +" " + lastName + " got a bonus of 350 riyals");
+JOptionPane.showMessageDialog(null,"congratulations !! adminstratior " + firstName +" " + lastName + " got a bonus of 350 riyals");
 salary+=350;
 }
 
 
 else {
-System.out.println("adminstratior " + firstName +" " + lastName + " dosen't get a bonus");
+JOptionPane.showMessageDialog(null,"adminstratior " + firstName +" " + lastName + " dosen't get a bonus");
 }}
 
 
@@ -73,6 +78,8 @@ return salary+= (salary*0.35);
 
 
 }
+
+
 
 
 

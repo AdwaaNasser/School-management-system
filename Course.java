@@ -1,7 +1,9 @@
-package csc113;
+
+package helloall;
 
 
 import java.util.Scanner;  
+import javax.swing.JOptionPane;
 
 
 public class Course {  
@@ -36,7 +38,7 @@ this.numOfStudents=0; }
 public boolean CanSignIn() {  
 // Check if the course is full  
 if (numOfStudents >= courseCapasity) {  
-System.out.println("Course is full. Cannot sign in ");  
+JOptionPane.showMessageDialog(null,"Course is full. Cannot sign in ");  
    return false;  }
 else  
 return true;    }  
@@ -48,9 +50,12 @@ public void fillCourse() {
 // fills an arrary of student at once  
 
 for (int i = 0; i < courseCapasity; i++) {  
-System.out.println("enter student information \n  first name\n "); firstName=input.next() ;  
-System.out.println("\nlast name"); LastName=input.next() ;  
-System.out.println("\nemail"); email=input.next();  
+//System.out.println("enter student information \n  first name\n ");
+firstName=input.next() ;  
+//System.out.println("\nlast name"); 
+LastName=input.next() ;  
+//System.out.println("\nemail");
+email=input.next();  
 student[i]= new Student( firstName, LastName,  email); 
 numOfStudents++;} } 
 
@@ -61,7 +66,7 @@ numOfStudents++;} }
 public void AddStudent() {  
 //checks if there is capastiy + adds a student to the arrey  
 if(CanSignIn()== true) { 
-System.out.print("enter student first name, last name and email");  
+//System.out.print("enter student first name, last name and email");  
 student[numOfStudents]= new Student(firstName, LastName,email );  
 numOfStudents++; } }  
 
@@ -69,29 +74,29 @@ numOfStudents++; } }
  
 
 boolean SearchForStudent() {  
-System.out.println("please enter the first name of the student you want to find"); 
+//System.out.println("please enter the first name of the student you want to find"); 
 String target=input.next(); 
 for( int i = 0 ;i < numOfStudents ; i++ )  
 if( student[i].firstName.equals(target) ) { 
-System.out.println(target +"is found"); 
+JOptionPane.showMessageDialog(null,target +"is found"); 
 return true; } 
-System.out.println("not found"); 
+JOptionPane.showMessageDialog(null,"not found"); 
 return false;}  
 
  
  
 
 public boolean deleteStudent() {	  
-System.out.println("please enter the first name of the student you want to delete"); 
+//System.out.println("please enter the first name of the student you want to delete"); 
 String target=input.next(); 
 for( int i = 0 ; i < numOfStudents ; i++ ) {  
 if (student[i].getFirstName().equals(target)) {  
 student[i] = student[ numOfStudents - 1] ;  
 numOfStudents-- ;  
-System.out.println("Student deleted successfully."); 
+JOptionPane.showMessageDialog(null,"Student deleted successfully."); 
 return true;  }  
 } 
-System.out.println("Student not found."); 
+JOptionPane.showMessageDialog(null,"Student not found."); 
 
 return false;} 
 
@@ -99,11 +104,14 @@ return false;}
 
  
 
-public void display() {  
+public String display() {  
 // fills an arrary of student at once  
-System.out.println("Students enrolled in " + courseName + ":"); 
+//System.out.println("Students enrolled in " + courseName + ":"); 
+String display = "Students enrolled in " + courseName + ":";
 for (int i = 0; i < numOfStudents; i++)  
-System.out.println(student[i]); } 
+display+=student[i].toString();
+return display;
+} 
 
  
 
@@ -115,15 +123,8 @@ return teacher;
 } 
 
  
-
- 
-
- 
-
- 
-
- 
-
  
 
 } 
+
+

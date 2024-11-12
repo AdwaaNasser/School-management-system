@@ -1,4 +1,7 @@
-package csc113;
+
+package helloall;
+
+
 public class Student extends Member {
 
 
@@ -8,7 +11,9 @@ super(firstName, lastName, email); }
 
 
 public String toString() {
-return "Student first Name= " + firstName + ", last Name= " + lastName + "]"; }
+return "Student first Name= " + firstName + ", last Name= " + lastName + "\n"; }
 
 
 }
+
+

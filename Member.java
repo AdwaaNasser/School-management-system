@@ -1,6 +1,9 @@
-package csc113;
+
+package helloall;
 
 public class Member {
+    
+
 	
 	protected String firstName;
 	protected String lastName;
@@ -33,3 +36,5 @@ public class Member {
 	}
 
 	}
+
+

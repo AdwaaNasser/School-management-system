@@ -1,7 +1,8 @@
-package csc113;
 
+package helloall;
 
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 
 public class Teacher extends Employee{
@@ -12,30 +13,33 @@ super(firstName, lastNmae, email, salary); }
 
 public void bonus () {
 Scanner input = new Scanner(System.in);
-System.out.println("enter how many days the teacher has missed");
-absensDays=input.nextInt();
+//System.out.println("enter how many days the teacher has missed");
 //checks invaild input
-while (absensDays<0|| absensDays>300) {
-System.out.println("invaild input!! enter again");
-absensDays=input.nextInt(); }
+try{
+absensDays=input.nextInt();
+if(absensDays<0|| absensDays>300)
+throw new InputOutOfRangeException ();
+    }catch(InputOutOfRangeException e){
+JOptionPane.showMessageDialog(null,"invaild input!! enter again");
+ }
 // when input is vaild calculate bonus
 if (absensDays==0) {
-System.out.println("congratulations !! teacher " + firstName +" " + lastName + " got a bonus of 1000 riyals");
+JOptionPane.showMessageDialog(null,"congratulations !! teacher " + firstName +" " + lastName + " got a bonus of 1000 riyals");
 salary+=1000;
 }
 
 else if (absensDays<=5) {
-System.out.println("congratulations !! teacher " + firstName +" " + lastName + " got a bonus of 500 riyals");
+JOptionPane.showMessageDialog(null,"congratulations !! teacher " + firstName +" " + lastName + " got a bonus of 500 riyals");
 salary+=500;
 }
 
 else if (absensDays<=10) {
-System.out.println("congratulations !! teacher " + firstName +" " + lastName + " got a bonus of 250 riyals");
+JOptionPane.showMessageDialog(null,"congratulations !! teacher " + firstName +" " + lastName + " got a bonus of 250 riyals");
 salary+=250;
 }
 
 else {
-System.out.println("teacher " + firstName +" " + lastName + " dosen't get a bonus");
+JOptionPane.showMessageDialog(null,"teacher " + firstName +" " + lastName + " dosen't get a bonus");
 }}
 
 // calculate salary based on working years
@@ -71,4 +75,6 @@ return "Teacher first Name= " + firstName + ", last Name= " + lastName ;
 
 
 
+
+ 
 
