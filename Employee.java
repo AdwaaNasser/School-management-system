@@ -20,15 +20,12 @@ JOptionPane.showMessageDialog(null,"please enter a vaild salary");
 } }
 
 
-public abstract void bonus();
+public abstract void bonus(int absensDays);
 
-public double calculateSalay() {
-return salary;
-
-}
+public abstract void calculateSalay() ;
 
 
-public void setYearsOfwork() {
+public void setYearsOfwork(int yearsOfwork) {
 Scanner input = new Scanner(System.in);
 //System.out.println("enter how many years that you have worked");
 //checks invaild input
