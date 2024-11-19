@@ -11,12 +11,12 @@ public Assistant(String firstName, String lastNmae, String email, double salary)
 super(firstName, lastNmae, email, salary); }
 
 
-public void bonus () {
-Scanner input = new Scanner(System.in);
+public void bonus (int absensDays) {
+//Scanner input = new Scanner(System.in);
 //System.out.println("enter how many days the Assistant has missed");
 //checks invaild input
 try{
-absensDays=input.nextInt();
+//absensDays=input.nextInt();
 if(absensDays<0|| absensDays>300)
 throw new InputOutOfRangeException ();
     }catch(InputOutOfRangeException e){
@@ -47,32 +47,34 @@ JOptionPane.showMessageDialog(null,"adminstratior " + firstName +" " + lastName 
 
 // calculate salary based on working years
 
-public double calculateSalay() {
+public void calculateSalay() {
 if(yearsOfwork<=5)
-return salary;
+JOptionPane.showMessageDialog(null, "your salary based on the years you worked"+salary);
 
 
 else if(yearsOfwork<=10)
-return salary+= (salary*0.15);
+JOptionPane.showMessageDialog(null, "your salary based on the years you worked"+(salary*0.15));
 
 
 else if(yearsOfwork<=15)
-return salary+= (salary*0.20);
+JOptionPane.showMessageDialog(null, "your salary based on the years you worked"+(salary*0.20));
 
 
 else if(yearsOfwork<=20)
-return salary+= (salary*0.25);
+JOptionPane.showMessageDialog(null, "your salary based on the years you worked"+(salary*0.25));
 
 
 else if(yearsOfwork<=25)
-return salary+= (salary*0.30);
+JOptionPane.showMessageDialog(null, "your salary based on the years you worked"+(salary*0.30));
 
 
 else
-return salary+= (salary*0.35);
+JOptionPane.showMessageDialog(null, "your salary based on the years you worked"+ (salary*0.35));
 
 
 }
+
+   
 
 
 
