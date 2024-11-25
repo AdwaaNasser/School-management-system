@@ -1,0 +1,30 @@
+//data member
+Assistant assistant;
+
+// add button
+ double salary = Double.parseDouble(salaryText);  // Ensure salary is a number
+        int yearsOfwork = Integer.parseInt(yearsText);   // Ensure years of work is a number
+        int absensDays = Integer.parseInt(absensDaysText);
+            
+      
+        
+            assistant = new Assistant(firstName, lastName, email, salary,yearsOfwork,absensDays);
+           
+           jTextField1.setText("");
+   jTextField2.setText("");
+   jTextField4.setText("");
+   jTextField5.setText("");
+   jTextField6.setText("");
+   jTextField7.setText("");
+
+ //display button
+  Assistant test =  assistant;
+         if(test == null){
+            jTextArea1.setText("there is no assistant found") ;
+            return; }
+         else {
+              jTextArea1.setText("");
+              jTextArea1.append(test.bonus());
+              jTextArea1.append("\n");
+              jTextArea1.append(test.calculateSalay());
+         }
