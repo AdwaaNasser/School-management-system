@@ -21,15 +21,13 @@ private String firstName;
 private String LastName;  
 private String email;  
 
- 
 
-
-public Course (String courseName, String courseCode, int courseCapasity,String firstName, String lastNmae, String email, double salary) {  
+public Course (String courseName, String courseCode, int courseCapasity,String firstName, String lastNmae, String email, double salary,int yearsOfwork,int absensDays) {  
 this.courseCode=courseCode;  
 this.courseName=courseName;  
 this.courseCapasity=courseCapasity; 
 this.student=new Student[courseCapasity]; 
-this.teacher = new Teacher(firstName,  lastNmae,  email,  salary);   
+this.teacher = new Teacher(firstName,  lastNmae,  email,  salary, yearsOfwork,absensDays);   
 this.numOfStudents=0; } 
 
   
@@ -48,28 +46,58 @@ return true;    }
 
 public void fillCourse() {  
 // fills an arrary of student at once  
+ for (int i = 0; i < courseCapasity; i++) {
+        // Get student input
+        try{
+        firstName = input.next();
+        if (firstName.isEmpty()) 
+            throw new IllegalArgumentException();
+        }catch (IllegalArgumentException inlegal){
+            JOptionPane.showMessageDialog(null,"First name cannot be empty.");
+     return;
+        }
+     try{
+       LastName = input.next();
+        if (LastName.isEmpty()) 
+            throw new IllegalArgumentException();
+        }catch (IllegalArgumentException inlegal){
+            JOptionPane.showMessageDialog(null,"Last name cannot be empty.");
+     return;
+        } try{
+       email = input.next();
+        if (email.isEmpty() || !email.contains("@"))
+            throw new IllegalArgumentException();
+        }catch (IllegalArgumentException inlegal){
+            JOptionPane.showMessageDialog(null,"Invalid email address.");
+     return;
+        }
 
-for (int i = 0; i < courseCapasity; i++) {  
-//System.out.println("enter student information \n  first name\n ");
-firstName=input.next() ;  
-//System.out.println("\nlast name"); 
-LastName=input.next() ;  
-//System.out.println("\nemail");
-email=input.next();  
-student[i]= new Student( firstName, LastName,  email); 
-numOfStudents++;} } 
+
+        // Add the student to the array
+        student[i] = new Student(firstName, LastName, email);
+        numOfStudents++;
+    } } 
 
 
 
- 
+ // Method to add a student to the course
+    public void addStudent() {
+        if (CanSignIn()) {
+            if (numOfStudents >= courseCapasity) {
+                // Unchecked ArrayIndexOutOfBoundsException if trying to add beyond the array size
+                throw new ArrayIndexOutOfBoundsException("Cannot add more students. The course is full.");
+            }
 
-public void AddStudent() {  
-//checks if there is capastiy + adds a student to the arrey  
-if(CanSignIn()== true) { 
-//System.out.print("enter student first name, last name and email");  
-student[numOfStudents]= new Student(firstName, LastName,email );  
-numOfStudents++; } }  
+            // Adding a student to the course
+            System.out.println("Enter student first name, last name, and email:");
+            firstName = input.next();
+            LastName = input.next();
+            email = input.next();
 
+            student[numOfStudents] = new Student(firstName, LastName, email);
+            numOfStudents++;
+        }
+    }
  
  
 
@@ -100,22 +128,6 @@ JOptionPane.showMessageDialog(null,"Student not found.");
 
 return false;} 
 
- 
-
- 
-
-public String display() {  
-// fills an arrary of student at once  
-//System.out.println("Students enrolled in " + courseName + ":"); 
-String display = "Students enrolled in " + courseName + ":";
-for (int i = 0; i < numOfStudents; i++)  
-display+=student[i].toString();
-return display;
-} 
-
- 
-
- 
 
 public Teacher getTeacher() { 
 return teacher; 
@@ -126,5 +138,3 @@ return teacher;
  
 
 } 
-
-
