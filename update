@@ -1,3 +1,40 @@
+//buttun do
+
+
+if(jRadioButton1.isSelected()== true){
+             String firstName =jTextField16.getText().trim();
+            course.deleteStudent(firstName);
+        }
+        if(jRadioButton2.isSelected()== true){
+             String firstName =jTextField16.getText().trim();
+            course.SearchForStudent(firstName);
+                   
+        }
+        if(jRadioButton3.isSelected()== true){
+             String firstName =jTextField16.getText().trim();
+              String lastName =jTextField17.getText().trim();
+               String email =jTextField18.getText().trim();
+            course.addStudent(firstName,lastName,email);
+        }
+
+//display studnt
+  Course test =  course;
+         if(test == null){
+            jTextArea2.setText("there is nothing to display") ;
+            return; }
+         else {
+              jTextArea2.setText("");
+              for(int i =0; i<test.student.length; i++){
+                  if(test.student[i]!=null)
+                   jTextArea2.append(test.student[i].toString());
+                  jTextArea2.append("\n");
+              }
+         }
+
+
+
+
+
 //data member
 Assistant assistant;
 
