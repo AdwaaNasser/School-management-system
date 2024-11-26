@@ -1,3 +1,30 @@
+//add course
+
+ String name =jTextField3.getText().trim();
+        String code =jTextField8.getText().trim();
+        String size =jTextField9.getText().trim();
+         String first =jTextField10.getText().trim();
+        String last =jTextField11.getText().trim();
+        String email =jTextField12.getText().trim();
+        String salaryText = jTextField13.getText().trim();
+    String yearsText = jTextField15.getText().trim();
+    String absensDaysText = jTextField14.getText().trim();
+ 
+        int size1 = Integer.parseInt(size); 
+         double salary = Double.parseDouble(salaryText);  // Ensure salary is a number
+        int yearsOfwork = Integer.parseInt(yearsText);   // Ensure years of work is a number
+        int absensDays = Integer.parseInt(absensDaysText);
+      course = new Course (name, code, size1, first,  last,  email, salary,yearsOfwork, absensDays)  ; 
+
+
+
+
+
+
+
+
+
+
 //buttun do
 
 
