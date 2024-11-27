@@ -1,3 +1,91 @@
+مسوده
+
+package helloall;
+
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+public abstract class Employee extends Member {
+    protected double salary;
+    protected int absensDays;
+    protected int yearsOfwork;
+    Scanner input = new Scanner(System.in);
+
+    public Employee(String firstName, String lastName, String email, double salary, int yearsOfwork, int absensDays) {
+        super(firstName, lastName, email);
+
+        // Validate inputs and throw an exception if invalid
+        if (!setSalary(salary)) {
+            throw new IllegalArgumentException("Invalid salary! Employee cannot be added.");
+        }
+        if (!setAbsensDays(absensDays)) {
+            throw new IllegalArgumentException("Invalid absence days! Employee cannot be added.");
+        }
+        if (!setYearsOfwork(yearsOfwork)) {
+            throw new IllegalArgumentException("Invalid years of work! Employee cannot be added.");
+        }
+
+        JOptionPane.showMessageDialog(null, "Employee added successfully!");
+    }
+
+    public abstract String bonus();
+
+    public abstract String calculateSalay();
+
+    // Methods to check invalid input
+    public boolean setSalary(double salary) {
+        try {
+            if (salary <= 0) {
+                throw new UnmatchedRangeException();
+            } else {
+                this.salary = salary;
+                return true;
+            }
+        } catch (UnmatchedRangeException e) {
+            JOptionPane.showMessageDialog(null, "Invalid salary! Employee cannot be added.");
+            return false;
+        }
+    }
+
+    public boolean setAbsensDays(int absensDays) {
+        try {
+            if (absensDays < 0 || absensDays > 300) {
+                throw new UnmatchedRangeException();
+            } else {
+                this.absensDays = absensDays;
+                return true;
+            }
+        } catch (UnmatchedRangeException e) {
+            JOptionPane.showMessageDialog(null, "Invalid absence days! Employee cannot be added.");
+            return false;
+        }
+    }
+
+    public boolean setYearsOfwork(int yearsOfwork) {
+        try {
+            if (yearsOfwork < 0 || yearsOfwork > 45) {
+                throw new UnmatchedRangeException();
+            } else {
+                this.yearsOfwork = yearsOfwork;
+                return true;
+            }
+        } catch (UnmatchedRangeException e) {
+            JOptionPane.showMessageDialog(null, "Invalid years of work! Employee cannot be added.");
+            return false;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 //add course
 
  String name =jTextField3.getText().trim();
