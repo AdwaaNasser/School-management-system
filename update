@@ -1,3 +1,23 @@
+ public UnmatchedRangeException (String message){
+        super(message);
+    }
+
+
+try{
+           // assistant = new Assistant(firstName, lastName, email, salary,yearsOfwork,absensDays); 
+        }catch(UnmatchedRangeException defined) {
+             JOptionPane.showMessageDialog(this,defined.getMessage());
+        }
+
+
+
+  try{
+      course = new Course (name, code, size1, first,  last,  email, salary,yearsOfwork, absensDays)  ; 
+} catch (ArrayIndexOutOfBoundsException ex) {
+        JOptionPane.showMessageDialog(null, ex.getMessage());
+    }
+
+
 مسوده
 
 
