@@ -11,15 +11,18 @@ Scanner input=new Scanner(System.in);
 
 public Employee(String firstName, String lastNmae, String email, double salary,int yearsOfwork,int absensDays) {
 super(firstName, lastNmae, email);
-//checks invaild input
-if (setSalary( salary)==false)
-    return;
-if (setAbsensDays( absensDays)==false)
-    return;
-if (setYearsOfwork( yearsOfwork)==false)
-    return;
 
- JOptionPane.showMessageDialog(null, "Assistant added successfully!");
+//call methodes to vaildate input
+if (!setSalary(salary)) {
+            throw new UnmatchedRangeException("Invalid salary! Employee cannot be added.");
+        }
+        if (!setAbsensDays(absensDays)) {
+            throw new UnmatchedRangeException("Invalid absence days! Employee cannot be added.");
+        }
+        if (!setYearsOfwork(yearsOfwork)) {
+            throw new UnmatchedRangeException("Invalid years of work! Employee cannot be added.");
+        }
+
 }
 
 
@@ -29,45 +32,35 @@ public abstract String calculateSalay() ;
 
 
 //methods to checks invaild input
-public boolean setSalary(double salary){
-    try{
-if (salary<=0) throw new UnmatchedRangeException ();
-else {
-    this.salary=salary;
-    return true;}
-}catch(UnmatchedRangeException e){
-JOptionPane.showMessageDialog(null,"Invalid salary!! Employee cant be added");
-return false;
+ public boolean setSalary(double salary) {
+       
+   if (salary <= 0) 
+      return false;
+    else {
+     this.salary = salary;
+      return true;
+            }   }
     
-}}
-public boolean setAbsensDays(int absensDays) {
 
-try{
- if (absensDays < 0 || absensDays > 300)
-                throw new UnmatchedRangeException();
- else{
-     this.absensDays = absensDays;
-      return true;}
-        } catch (UnmatchedRangeException e) {
-            JOptionPane.showMessageDialog(null, "Invalid absens Days!!Employee cant be added "); 
-        return false;}
+    public boolean setAbsensDays(int absensDays) {
+    
+     if (absensDays < 0 || absensDays > 300) 
+        return false;
+      else {
+          this.absensDays = absensDays;
+         return true;
+            }
+        
+    }
 
-
-}
-
-public boolean setYearsOfwork(int yearsOfwork) {
-try{
-if (yearsOfwork<0|| yearsOfwork>45)
-throw new UnmatchedRangeException ();
-else {
-    this.yearsOfwork = yearsOfwork;
-     return true;}
-    }catch(UnmatchedRangeException e){
-JOptionPane.showMessageDialog(null,"invaild years Of work!! Employee cant be added");
-return false;
- }
-}
-
-
+    public boolean setYearsOfwork(int yearsOfwork) {
+     
+    if (yearsOfwork < 0 || yearsOfwork > 45)
+       return false;
+      else {
+        this.yearsOfwork = yearsOfwork;
+         return true;
+            }
+    }
 
 }
