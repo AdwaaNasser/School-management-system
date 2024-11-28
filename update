@@ -1,5 +1,60 @@
 مسوده
 
+
+public Course(String courseName, String courseCode, int courseCapacity, String firstName, String lastName, String email, double salary, int yearsOfWork, int absenceDays) throws IllegalArgumentException {
+    if (courseCapacity <= 0) {
+        throw new IllegalArgumentException("Invalid course capacity.");
+    }
+
+    this.courseCode = courseCode;
+    this.courseName = courseName;
+    this.courseCapasity = courseCapacity;
+    this.numOfStudents = 0;
+
+    // Attempt to create a Teacher object
+    try {
+        this.teacher = new Teacher(firstName, lastName, email, salary, yearsOfWork, absenceDays);
+    } catch (Exception e) {
+        throw new IllegalArgumentException("Failed to add teacher: " + e.getMessage());
+    }
+
+    // Initialize student array
+    this.student = new Student[courseCapacity];
+}
+
+بزر الاد
+
+
+addButton.addActionListener(e -> {
+    try {
+        // Read user input from GUI fields
+        String courseName = courseNameField.getText();
+        String courseCode = courseCodeField.getText();
+        int courseCapacity = Integer.parseInt(courseCapacityField.getText());
+        String teacherFirstName = teacherFirstNameField.getText();
+        String teacherLastName = teacherLastNameField.getText();
+        String teacherEmail = teacherEmailField.getText();
+        double teacherSalary = Double.parseDouble(teacherSalaryField.getText());
+        int teacherYearsOfWork = Integer.parseInt(teacherYearsOfWorkField.getText());
+        int teacherAbsenceDays = Integer.parseInt(teacherAbsenceDaysField.getText());
+
+        // Attempt to create the Course object
+        Course newCourse = new Course(courseName, courseCode, courseCapacity, teacherFirstName, teacherLastName, teacherEmail, teacherSalary, teacherYearsOfWork, teacherAbsenceDays);
+
+        JOptionPane.showMessageDialog(null, "Course added successfully!");
+
+        // Add course to a list or process it further
+        courseList.add(newCourse);
+
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(null, "Invalid input. Please enter correct values.");
+    } catch (IllegalArgumentException ex) {
+        JOptionPane.showMessageDialog(null, ex.getMessage());
+    }
+});
+
+مسوده
+
 package helloall;
 
 import java.util.Scanner;
