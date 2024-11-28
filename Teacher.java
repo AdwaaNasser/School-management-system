@@ -8,7 +8,8 @@ import javax.swing.JOptionPane;
 public class Teacher extends Employee{
 
 public Teacher(String firstName, String lastNmae, String email, double salary,int yearsOfwork,int absensDays) {
-super(firstName, lastNmae, email, salary,yearsOfwork,absensDays); }
+super(firstName, lastNmae, email, salary,yearsOfwork,absensDays);
+ JOptionPane.showMessageDialog(null, "Teacher added successfully!"); }
 
 
 public String bonus () {
