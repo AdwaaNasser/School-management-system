@@ -26,7 +26,7 @@ public Course (String courseName, String courseCode, int courseCapasity,String f
 this.courseCode=courseCode;  
 this.courseName=courseName;  
 this.courseCapasity=courseCapasity; 
-;if (setSize( courseCapasity)==false)
+if (setSize( courseCapasity)==false)
     return;
 this.teacher = new Teacher(firstName,  lastNmae,  email,  salary, yearsOfwork,absensDays);   
 this.numOfStudents=0; 
@@ -52,24 +52,22 @@ return true;
 
  // Method to add a student to the course
     public void addStudent(String firstName,String LastName , String email) {
-        if (!CanSignIn()) {
+        if (CanSignIn()) {
             // Adding a student to the course if it's not full
             student[numOfStudents++] = new Student(firstName, LastName, email);
            JOptionPane.showMessageDialog(null,"student add successfully.");
-     return;
         }
     }
  
  
 
 boolean SearchForStudent(String firstName) {  
-//System.out.println("please enter the first name of the student you want to find"); 
 String target= firstName; 
 for( int i = 0 ;i < numOfStudents ; i++ )  
 if( student[i].firstName.equals(target) ) { 
-JOptionPane.showMessageDialog(null,target +"is found"); 
+JOptionPane.showMessageDialog(null,target +" is found"); 
 return true; } 
-JOptionPane.showMessageDialog(null,"not found"); 
+JOptionPane.showMessageDialog(null,"Student not found"); 
 return false;}  
 
  
@@ -81,11 +79,12 @@ String target=firstName;
 for( int i = 0 ; i < numOfStudents ; i++ ) {  
 if (student[i].getFirstName().equals(target)) {  
 student[i] = student[ numOfStudents - 1] ;  
-numOfStudents-- ;  
+student[--numOfStudents]=null ;  
 JOptionPane.showMessageDialog(null,"Student deleted successfully."); 
+return;
   }  
 } 
-JOptionPane.showMessageDialog(null,"Student not found."); 
+JOptionPane.showMessageDialog(null,"can't delete becuse student is not found."); 
 
 } 
 
