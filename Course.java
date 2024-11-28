@@ -6,7 +6,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 
-public class Course {  
+public class Course  {  
 public Student[] student; 
 private String courseName;  
 private String courseCode;  
@@ -22,12 +22,17 @@ private String LastName;
 private String email;  
 
 
-public Course (String courseName, String courseCode, int courseCapasity,String firstName, String lastNmae, String email, double salary,int yearsOfwork,int absensDays) {  
+public Course (String courseName, String courseCode, int size,String firstName, String lastNmae, String email, double salary,int yearsOfwork,int absensDays) {  
+ 
+   //vaildate input 
+ if (size <= 0) {
+        throw new ArrayIndexOutOfBoundsException("Invalid course capacity!! course can't be added");
+    }
+    
 this.courseCode=courseCode;  
 this.courseName=courseName;  
-this.courseCapasity=courseCapasity; 
-if (setSize( courseCapasity)==false)
-    return;
+this.courseCapasity=size; 
+this.student=new Student[size];
 this.teacher = new Teacher(firstName,  lastNmae,  email,  salary, yearsOfwork,absensDays);   
 this.numOfStudents=0; 
 JOptionPane.showMessageDialog(null, "course added successfully!");} 
@@ -87,24 +92,5 @@ return;
 JOptionPane.showMessageDialog(null,"can't delete becuse student is not found."); 
 
 } 
-
-
-public Teacher getTeacher() { 
-return teacher; 
-
-} 
-
- public boolean setSize(int size){
-    try{
-if (size<=0) throw new  ArrayIndexOutOfBoundsException ();
-else {
-    this.student=new Student[size];
-    return true;}
-}catch( ArrayIndexOutOfBoundsException e){
-JOptionPane.showMessageDialog(null,"Invalid array size!! ");
-return false;
-    
-}}
  
-
 } 
