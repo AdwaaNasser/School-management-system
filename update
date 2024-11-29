@@ -14,7 +14,7 @@ try{
   try{
       course = new Course (name, code, size1, first,  last,  email, salary,yearsOfwork, absensDays)  ; 
 } catch (ArrayIndexOutOfBoundsException ex) {
-        JOptionPane.showMessageDialog(null, ex.getMessage());
+        JOptionPane.showMessageDialog(this, ex.getMessage());
     }
 
 
